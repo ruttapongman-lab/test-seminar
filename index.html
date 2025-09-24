@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OLO-NAKA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1508057198894-247b23fe5ade?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 30, 0.7);
+            backdrop-filter: blur(2px);
+            z-index: -2;
+        }
+
+        .lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #00fff7, transparent);
+            animation: move 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        .line:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .line:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .line:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .line:nth-child(4) { left: 70%; animation-delay: 3s; }
+        .line:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+        @keyframes move {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .container {
+            padding: 20px;
+            border: 3px solid #ff00ff;
+            border-radius: 20px;
+            background: rgba(20, 20, 30, 0.85);
+            box-shadow: 0 0 25px #00fff7, 0 0 50px #ff00ff inset;
+            max-width: 500px;
+            animation: neonBorder 4s linear infinite;
+        }
+
+        @keyframes neonBorder {
+            0% { border-color: #ff00ff; box-shadow: 0 0 25px #ff00ff, 0 0 50px #00fff7 inset; }
+            25% { border-color: #00fff7; box-shadow: 0 0 25px #00fff7, 0 0 50px #fffb00 inset; }
+            50% { border-color: #fffb00; box-shadow: 0 0 25px #fffb00, 0 0 50px #ff00ff inset; }
+            75% { border-color: #00ff00; box-shadow: 0 0 25px #00ff00, 0 0 50px #ff00ff inset; }
+            100% { border-color: #ff00ff; box-shadow: 0 0 25px #ff00ff, 0 0 50px #00fff7 inset; }
+        }
+
+        img {
+            border: 3px solid #00fff7;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00fff7;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ff00ff, 0 0 60px #00fff7;
+        }
+
+        h2, h3, h4, h5, h6 {
+            margin: 10px 0;
+            font-weight: bold;
+            text-shadow: 0 0 6px #fff, 0 0 12px #ff00ff, 0 0 18px #00fff7;
+        }
+
+        h2 { color: #00fff7; }
+        h3 { color: #fffb00; }
+        h4 { color: #ff9900; }
+        h5 { color: #00ff00; }
+        h6 { color: #ff0040; }
+
+        .glitch {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #ff00ff;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 8px #ff00ff, 0 0 16px #00fff7;
+            animation: flicker 2s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.3; }
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            text-shadow: 0 0 6px #ff00ff;
+            box-shadow: 0 0 12px #ff00ff, 0 0 24px #00fff7;
+            transition: all 0.3s ease-in-out;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .btn:hover {
+            background: #ff00ff;
+            color: #000;
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00fff7, 0 0 60px #fffb00;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 0 10px #ff00ff, 0 0 20px #00fff7; }
+            to { box-shadow: 0 0 20px #00fff7, 0 0 40px #ff00ff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated neon lines -->
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="container">
+        <img src="OLO-NAKA.png" alt="OLO-NAKA" width="300" height="450">
+        <h1 class="glitch" data-text="OLO-NAKA">OLO-NAKA</h1>
+        <h2>E-Mail : OLONAKA@hellmail.com</h2>
+        <h3>School : Phosaisawangwit</h3>
+        <h4>Department : สพป.รอ.3</h4>
+        <h5>Gender : Male</h5>
+        <h6>Age : 35</h6>
+
+        <!-- Neon Buttons -->
+        <div class="buttons">
+            <a href="mailto:OLONAKA@hellmail.com" class="btn">✉ Email Me</a>
+            <a href="https://www.google.com/search?q=Phosaisawangwit+School" target="_blank" class="btn">🏫 My School</a>
+            <a href="#" class="btn">💾 Portfolio</a>
+            <a href="#" class="btn">🌐 Website</a>
+        </div>
+    </div>
+
+    <!-- Sound Effects -->
+    <audio id="hoverSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-jump-223.wav" preload="auto"></audio>
+    <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-retro-game-notification-212.wav" preload="auto"></audio>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kai_Engel/ICD-10/Kai_Engel_-_05_-_Periculum.mp3" autoplay loop></audio>
+
+    <script>
+        const hoverSound = document.getElementById("hoverSound");
+        const clickSound = document.getElementById("clickSound");
+        const bgMusic = document.getElementById("bgMusic");
+        const buttons = document.querySelectorAll(".btn");
+
+        // Button sounds
+        buttons.forEach(btn => {
+            btn.addEventListener("mouseenter", () => {
+                hoverSound.currentTime = 0;
+                hoverSound.play();
+            });
+
+            btn.addEventListener("click", () => {
+                clickSound.currentTime = 0;
+                clickSound.play();
+            });
+        });
+
+        // Ensure music plays after first click (autoplay restriction)
+        document.body.addEventListener("click", () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+            }
+        });
+    </script>
+</body>
+</html>
